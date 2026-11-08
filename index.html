@@ -1,0 +1,3000 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="theme-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPATIAL STRATUM ｜ 空間風格師・留白與生活策展工作室</title>
+  <meta name="description" content="空間風格師・空間量身策展人。風格不該被單一標籤定義，家應該長出屬於你自己的模樣。探索空間呼吸三階律：30%負空間、視線低熵落點、靜默的聲學容器。">
+  
+  <!-- Google Fonts Preconnect & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & SYSTEM VARIABLES (Extracted from Uploaded Editorial Cards)
+       ========================================================================== */
+    :root {
+      /* Dark Theme (Default - Matching Uploaded IG Cards) */
+      --bg-deep: #100E0C;
+      --bg-surface: #161412;
+      --bg-surface-elevated: #1E1B18;
+      --bg-glass: rgba(22, 20, 18, 0.82);
+      --bg-glass-heavy: rgba(16, 14, 12, 0.92);
+      --bg-glass-card: rgba(22, 20, 18, 0.78);
+      
+      --text-hero: #FAF8F2;
+      --text-primary: #EDE8DE;
+      --text-secondary: #C8BFB4;
+      --text-muted: #8E867C;
+      --text-highlight: #FFFFFF;
+      
+      --accent-bronze: #A3907C;
+      --accent-warm-sand: #C2AF9B;
+      --accent-ochre: #8C7355;
+      --accent-tan: #D4C5B3;
+      --accent-glow: rgba(163, 144, 124, 0.25);
+      
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-gold: rgba(163, 144, 124, 0.35);
+      --border-gold-strong: rgba(194, 175, 155, 0.65);
+      
+      --font-serif: 'Noto Serif TC', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Noto Sans TC', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --shadow-glass: 0 16px 40px rgba(0, 0, 0, 0.55);
+      --shadow-lift: 0 20px 50px rgba(0, 0, 0, 0.7);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 14px;
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Oatmeal Paper Day Mode */
+    html.theme-paper {
+      --bg-deep: #FAF8F5;
+      --bg-surface: #F2EDE4;
+      --bg-surface-elevated: #E9E2D5;
+      --bg-glass: rgba(245, 240, 232, 0.88);
+      --bg-glass-heavy: rgba(250, 248, 245, 0.95);
+      --bg-glass-card: rgba(240, 234, 224, 0.85);
+      
+      --text-hero: #1A1918;
+      --text-primary: #2C2825;
+      --text-secondary: #57514B;
+      --text-muted: #827A71;
+      --text-highlight: #0D0C0B;
+      
+      --accent-bronze: #755F46;
+      --accent-warm-sand: #8C7355;
+      --accent-ochre: #A38562;
+      --accent-tan: #B39E82;
+      --accent-glow: rgba(140, 115, 85, 0.18);
+      
+      --border-subtle: rgba(44, 40, 37, 0.14);
+      --border-gold: rgba(140, 115, 85, 0.32);
+      --border-gold-strong: rgba(140, 115, 85, 0.65);
+      
+      --shadow-glass: 0 12px 35px rgba(50, 40, 30, 0.08);
+      --shadow-lift: 0 20px 45px rgba(50, 40, 30, 0.12);
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body {
+      overflow-x: hidden;
+      position: relative;
+      background-color: var(--bg-deep);
+      min-height: 100vh;
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--accent-bronze);
+      color: #FFFFFF;
+    }
+
+    /* Subtle Film Grain Noise Texture */
+    .grain-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Container Utility */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* Typography Utilities */
+    h1, h2, h3, h4, .font-serif {
+      font-family: var(--font-serif);
+      letter-spacing: 0.03em;
+      font-weight: 700;
+    }
+
+    .editorial-badge {
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-warm-sand);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .editorial-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent-bronze);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      line-height: 0.8;
+      color: var(--accent-bronze);
+      display: block;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--text-hero);
+    }
+
+    .brand-logo-main {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo-main span {
+      color: var(--accent-warm-sand);
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-logo-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: var(--accent-bronze);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      transition: var(--transition-smooth);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-hero);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; width: 0;
+      height: 1px;
+      background: var(--accent-warm-sand);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border-gold);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--accent-warm-sand);
+    }
+
+    .btn-cta-nav {
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-smooth);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-cta-nav:hover {
+      background: var(--accent-warm-sand);
+      color: #100E0C;
+    }
+
+    /* Mobile Hamburger */
+    .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-hero);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 76px; left: 0; right: 0;
+        background: var(--bg-surface);
+        padding: 24px 32px;
+        border-bottom: 1px solid var(--border-gold);
+        gap: 16px;
+      }
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Vol.36 空間的暫停鍵：留白，才是最高級的軟裝)
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 130px 0 70px 0;
+      background-color: var(--bg-deep);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('web_assets/pause_p1_hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 1;
+      transform: scale(1.02);
+      transition: transform 8s ease-out;
+    }
+
+    .hero-section:hover .hero-bg {
+      transform: scale(1.05);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(16, 14, 12, 0.42) 0%,
+        rgba(16, 14, 12, 0.22) 35%,
+        rgba(14, 12, 10, 0.72) 65%,
+        rgba(10, 8, 7, 0.96) 100%
+      );
+      z-index: 2;
+    }
+
+    html.theme-paper .hero-scrim {
+      background: linear-gradient(
+        180deg,
+        rgba(250, 248, 245, 0.2) 0%,
+        rgba(250, 248, 245, 0.4) 40%,
+        rgba(240, 234, 224, 0.85) 75%,
+        rgba(250, 248, 245, 0.98) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .hero-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero-series-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hero-carousel-dots {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .hero-carousel-dots svg {
+      height: 10px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      color: var(--text-hero);
+      margin-bottom: 20px;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 820px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    /* Frosted Glass Card in Hero (Matching P1 card) */
+    .glass-card-editorial {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 30px 36px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-glass);
+      max-width: 960px;
+      transition: var(--transition-smooth);
+    }
+
+    .glass-card-editorial:hover {
+      border-color: var(--border-gold-strong);
+      transform: translateY(-2px);
+    }
+
+    .glass-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    .glass-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .glass-badge {
+      font-family: var(--font-serif);
+      color: var(--accent-warm-sand);
+      font-weight: 700;
+      margin-right: 18px;
+      white-space: nowrap;
+      font-size: 1.05rem;
+      letter-spacing: 0.05em;
+    }
+
+    .glass-text strong {
+      color: var(--text-highlight);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      padding: 14px 30px;
+      font-size: 0.92rem;
+      letter-spacing: 0.12em;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-warm-sand);
+      color: #100E0C;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(163, 144, 124, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-hero);
+      padding: 14px 28px;
+      font-size: 0.92rem;
+      letter-spacing: 0.12em;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid var(--border-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--accent-warm-sand);
+      transform: translateY(-2px);
+    }
+
+    .hero-footer-bar {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
+      margin-top: 36px;
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       SECTION WRAPPER & HEADERS
+       ========================================================================== */
+    .section-wrap {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+      max-width: 780px;
+    }
+
+    .section-header.text-center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-header.text-center .editorial-badge {
+      justify-content: center;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.2vw, 2.9rem);
+      line-height: 1.35;
+      color: var(--text-hero);
+      margin: 14px 0 16px 0;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ==========================================================================
+       SECTION 1: THE 3-TIER SPATIAL LAW (空間呼吸三階律)
+       ========================================================================== */
+    .stratum-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 1024px) {
+      .stratum-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .stratum-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      position: relative;
+      box-shadow: var(--shadow-glass);
+    }
+
+    .stratum-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-gold-strong);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .stratum-img-box {
+      width: 100%;
+      height: 290px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stratum-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .stratum-card:hover .stratum-img-box img {
+      transform: scale(1.06);
+    }
+
+    .stratum-card-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: rgba(16, 14, 12, 0.82);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-warm-sand);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      padding: 5px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+
+    .stratum-body {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .stratum-num {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-bronze);
+      margin-bottom: 8px;
+    }
+
+    .stratum-heading {
+      font-size: 1.45rem;
+      line-height: 1.4;
+      color: var(--text-hero);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .stratum-subcards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .stratum-item-block {
+      background: var(--bg-surface-elevated);
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid var(--accent-ochre);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .stratum-item-block strong {
+      color: var(--text-primary);
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+      font-family: var(--font-serif);
+    }
+
+    .stratum-footer-cite {
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      text-transform: uppercase;
+    }
+
+    /* Interactive Ergonomic & Acoustic Widgets */
+    .interactive-showcase-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: var(--shadow-glass);
+    }
+
+    .interactive-grid-tools {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .interactive-grid-tools {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-pane {
+      background: var(--bg-surface-elevated);
+      padding: 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tool-header-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--text-hero);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-container {
+      margin: 24px 0 18px 0;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .custom-range {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border-subtle);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .custom-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-warm-sand);
+      cursor: pointer;
+      border: 2px solid var(--bg-deep);
+      box-shadow: 0 0 10px rgba(163, 144, 124, 0.6);
+    }
+
+    .diagnostic-result-badge {
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      background: rgba(22, 20, 18, 0.7);
+      border: 1px solid var(--border-gold);
+      margin-top: 14px;
+    }
+
+    .diagnostic-status {
+      font-weight: 700;
+      color: var(--accent-warm-sand);
+      font-size: 1rem;
+      margin-bottom: 4px;
+      font-family: var(--font-serif);
+    }
+
+    .diagnostic-detail {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       SECTION 2: DESIGNER & FOUNDER PROFILE (形象照預留與創辦人手記)
+       ========================================================================== */
+    .designer-profile-section {
+      background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 50%, var(--bg-deep) 100%);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .profile-photo-col {
+      position: relative;
+    }
+
+    .profile-photo-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-gold-strong);
+      box-shadow: var(--shadow-lift);
+      background: #141210;
+    }
+
+    .profile-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .photo-overlay-tag {
+      position: absolute;
+      top: 18px; left: 18px;
+      background: rgba(16, 14, 12, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--accent-warm-sand);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-warm-sand);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .photo-overlay-tag .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #E5A96A;
+      border-radius: 50%;
+      animation: pulseAnimation 2s infinite;
+    }
+
+    @keyframes pulseAnimation {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(229, 169, 106, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(229, 169, 106, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(229, 169, 106, 0); }
+    }
+
+    .photo-action-bar {
+      margin-top: 16px;
+      background: var(--bg-surface-elevated);
+      border: 1px dashed var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .photo-tip-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .photo-tip-text code {
+      font-family: var(--font-mono);
+      background: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 2px;
+      color: var(--accent-warm-sand);
+    }
+
+    .btn-photo-replace {
+      background: transparent;
+      border: 1px solid var(--accent-warm-sand);
+      color: var(--accent-warm-sand);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-weight: 500;
+    }
+
+    .btn-photo-replace:hover {
+      background: var(--accent-warm-sand);
+      color: #100E0C;
+    }
+
+    .profile-info-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-meta-header {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      letter-spacing: 0.22em;
+      color: var(--accent-warm-sand);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .profile-founder-title {
+      font-size: clamp(2.2rem, 3.6vw, 3.2rem);
+      color: var(--text-hero);
+      line-height: 1.3;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .profile-creed-quote {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      border-left: 3px solid var(--accent-ochre);
+      padding-left: 24px;
+      margin-bottom: 28px;
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+
+    .profile-narrative {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    .profile-narrative p {
+      margin-bottom: 16px;
+    }
+
+    .profile-credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .profile-credentials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .credential-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+    }
+
+    .credential-badge-title {
+      font-family: var(--font-serif);
+      color: var(--accent-warm-sand);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .credential-badge-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .curator-stamp-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+    }
+
+    .curator-stamp-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--text-hero);
+    }
+
+    .curator-stamp-sub {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-bronze);
+    }
+
+    /* ==========================================================================
+       SECTION 3: CURATORIAL SELECTION & MATRIX (留白與靜音軟裝選品矩陣)
+       ========================================================================== */
+    .matrix-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+      .matrix-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .matrix-stilllife-img {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      box-shadow: var(--shadow-lift);
+      height: 580px;
+    }
+
+    .matrix-stilllife-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .matrix-stilllife-img:hover img {
+      transform: scale(1.04);
+    }
+
+    .matrix-img-overlay {
+      position: absolute;
+      bottom: 24px; left: 24px; right: 24px;
+      background: rgba(16, 14, 12, 0.85);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border-gold);
+      padding: 20px 24px;
+      border-radius: var(--radius-sm);
+    }
+
+    .matrix-img-overlay-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-hero);
+      margin-bottom: 4px;
+    }
+
+    .matrix-img-overlay-sub {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-warm-sand);
+    }
+
+    .matrix-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .matrix-item-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .matrix-item-card:hover {
+      border-color: var(--accent-warm-sand);
+      transform: translateX(6px);
+      background: var(--bg-surface-elevated);
+    }
+
+    .matrix-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .matrix-item-badge {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--accent-warm-sand);
+      font-weight: 700;
+    }
+
+    .matrix-item-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-bronze);
+      text-transform: uppercase;
+    }
+
+    .matrix-item-name {
+      font-size: 1.25rem;
+      color: var(--text-hero);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .matrix-item-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .matrix-item-metrics {
+      display: flex;
+      gap: 16px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--accent-tan);
+      font-family: var(--font-mono);
+    }
+
+    /* ==========================================================================
+       SECTION 4: 5-SLIDE INSTAGRAM CAROUSEL VIEWER (5頁滿版輪播檢視器)
+       ========================================================================== */
+    .carousel-section {
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      position: relative;
+    }
+
+    .carousel-viewer-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #000000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      box-shadow: var(--shadow-lift);
+      position: relative;
+    }
+
+    .carousel-screen {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background-color: #100E0C;
+      overflow: hidden;
+    }
+
+    .carousel-slide-img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: contain;
+      background: #0D0B0A;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      pointer-events: none;
+    }
+
+    .carousel-slide-img.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-controls-bar {
+      background: rgba(18, 16, 14, 0.95);
+      border-top: 1px solid var(--border-gold);
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .carousel-pagination-dots {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .dot-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-warm-sand);
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      padding: 0;
+    }
+
+    .dot-btn.active {
+      background: var(--accent-warm-sand);
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(194, 175, 155, 0.5);
+    }
+
+    .carousel-arrows {
+      display: flex;
+      gap: 12px;
+    }
+
+    .arrow-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      color: var(--text-hero);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 1.1rem;
+    }
+
+    .arrow-btn:hover {
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      border-color: var(--accent-warm-sand);
+    }
+
+    .carousel-caption-bar {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    .carousel-caption-bar strong {
+      color: var(--text-highlight);
+    }
+
+    .carousel-thumbs-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      justify-content: center;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .thumb-item {
+      width: 110px;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      opacity: 0.6;
+      transition: var(--transition-smooth);
+      flex-shrink: 0;
+    }
+
+    .thumb-item.active,
+    .thumb-item:hover {
+      opacity: 1;
+      border-color: var(--accent-warm-sand);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ==========================================================================
+       SECTION 5: WEEKLY 7-DAY CURATORIAL ARCHIVES (七大主題日更策展誌)
+       ========================================================================== */
+    .filter-tabs-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 16px;
+    }
+
+    .filter-tab {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-family: var(--font-sans);
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      border-color: var(--accent-ochre);
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      .posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .posts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .post-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-glass);
+      cursor: pointer;
+    }
+
+    .post-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-gold-strong);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .post-card-thumb {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: #141210;
+    }
+
+    .post-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .post-card:hover .post-card-thumb img {
+      transform: scale(1.06);
+    }
+
+    .post-day-tag {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: rgba(16, 14, 12, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-warm-sand);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .post-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .post-date-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-bronze);
+      margin-bottom: 8px;
+    }
+
+    .post-card-title {
+      font-size: 1.25rem;
+      line-height: 1.45;
+      color: var(--text-hero);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .post-card-snippet {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .post-card-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--accent-warm-sand);
+      font-family: var(--font-serif);
+    }
+
+    /* ==========================================================================
+       SECTION 6: MASTER BIBLIOGRAPHY (大師經典理論考據庫)
+       ========================================================================== */
+    .bib-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .bib-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bib-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-ochre);
+      border-radius: var(--radius-sm);
+      padding: 26px 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .bib-card:hover {
+      border-color: var(--border-gold);
+      background: var(--bg-surface-elevated);
+      transform: translateY(-3px);
+    }
+
+    .bib-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .bib-author {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-hero);
+    }
+
+    .bib-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      background: var(--bg-deep);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-warm-sand);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .bib-book-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--accent-warm-sand);
+      margin-bottom: 4px;
+      font-style: italic;
+    }
+
+    .bib-book-en {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .bib-core-theory {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SECTION 7: SPATIAL CONSULTATION & BOOKING (空間問診預約單)
+       ========================================================================== */
+    .booking-section {
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-gold);
+      position: relative;
+    }
+
+    .booking-card-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      box-shadow: var(--shadow-lift);
+    }
+
+    @media (max-width: 768px) {
+      .booking-card-wrap {
+        padding: 30px 20px;
+      }
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 650px) {
+      .form-group-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--text-hero);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      background: var(--bg-deep);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-warm-sand);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .radio-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .radio-pill-label {
+      background: var(--bg-deep);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .radio-pill-label input {
+      display: none;
+    }
+
+    .radio-pill-label.active,
+    .radio-pill-label:hover {
+      border-color: var(--accent-warm-sand);
+      color: var(--text-hero);
+      background: var(--bg-surface-elevated);
+    }
+
+    .radio-pill-label.active {
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      border-color: var(--accent-ochre);
+    }
+
+    .btn-submit-booking {
+      width: 100%;
+      background: var(--accent-ochre);
+      color: #FFFFFF;
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-submit-booking:hover {
+      background: var(--accent-warm-sand);
+      color: #100E0C;
+      box-shadow: 0 10px 25px rgba(163, 144, 124, 0.4);
+    }
+
+    .booking-success-box {
+      display: none;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--accent-warm-sand);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       SITE FOOTER
+       ========================================================================== */
+    .site-footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border-subtle);
+      padding: 70px 0 40px 0;
+      font-family: var(--font-serif);
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--text-hero);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-desc {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .footer-col-title {
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-warm-sand);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-family: var(--font-sans);
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links-list a:hover {
+      color: var(--accent-warm-sand);
+      padding-left: 4px;
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Modal Styling */
+    .article-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 8, 7, 0.88);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .article-modal.active {
+      display: flex;
+    }
+
+    .modal-content-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      max-width: 860px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      position: relative;
+      box-shadow: var(--shadow-lift);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-gold);
+      color: var(--text-hero);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Noise Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-nav" id="site-nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-logo">
+        <span class="brand-logo-main">SPATIAL STRATUM <span>空間風格師</span></span>
+        <span class="brand-logo-sub">CURATORIAL ARCHIVES · EDITION ON LIVING</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#stratum">01 留白哲學</a></li>
+          <li><a href="#profile">02 風格師形象</a></li>
+          <li><a href="#matrix">03 靜音選品</a></li>
+          <li><a href="#carousel">04 5頁輪播</a></li>
+          <li><a href="#archives">05 日更策展誌</a></li>
+          <li><a href="#bibliography">06 理論考據</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" title="切換夜宴暗調 / 晨光紙感模式">
+          <span id="theme-icon">☀️</span> <span id="theme-text">晨光紙感</span>
+        </button>
+        <a href="#booking" class="btn-cta-nav">預約空間問診 ➔</a>
+        <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION (Vol.36 空間的「暫停鍵」：留白，才是最高級的軟裝)
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <div class="hero-top-meta">
+        <div class="hero-series-title">SUNDAY ESSAY ｜ VOL.36 · SPATIAL STRATUM</div>
+        <div class="hero-carousel-dots">
+          <!-- Active Dot 1 of 5 -->
+          <svg width="60" height="8" viewBox="0 0 60 8" fill="none">
+            <circle cx="4" cy="4" r="3.5" fill="#A3907C" stroke="#A3907C"/>
+            <circle cx="16" cy="4" r="3.5" fill="none" stroke="white" stroke-opacity="0.4"/>
+            <circle cx="28" cy="4" r="3.5" fill="none" stroke="white" stroke-opacity="0.4"/>
+            <circle cx="40" cy="4" r="3.5" fill="none" stroke="white" stroke-opacity="0.4"/>
+            <circle cx="52" cy="4" r="3.5" fill="none" stroke="white" stroke-opacity="0.4"/>
+          </svg>
+        </div>
+      </div>
+
+      <span class="quote-mark">“</span>
+      <h1 class="hero-title">空間的「暫停鍵」：<br>留白，才是最高級的軟裝</h1>
+      
+      <p class="hero-lead">
+        為什麼填滿了昂貴系統櫃與名牌家具，家依然讓人感到胸口發悶？<br>
+        軟裝師親授「空間留白呼吸三階律」：動線負空間 30% × 視線低熵落點 × 聲學殘響減速——為心靈留下一座安靜庇護所。
+      </p>
+
+      <div class="glass-card-editorial">
+        <div class="glass-item">
+          <span class="glass-badge">[裝修盲區]</span>
+          <div class="glass-text">
+            <strong>做滿收納櫃與名牌家具</strong>：一坪幾十萬的焦慮感，常讓家變成倉儲物流中心，關鍵在於缺少呼吸的「虛空」。
+          </div>
+        </div>
+        <div class="glass-item">
+          <span class="glass-badge">[空間呼吸]</span>
+          <div class="glass-text">
+            <strong>三階留白律</strong>：走道保留 90–120cm 淨寬 ＋ 視線空出一面礦物白牆 ＋ 羊毛亞麻殘響控制在 0.4–0.6 秒舒適區間。
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#stratum" class="btn-primary">探索空間呼吸三階律 ➔</a>
+        <a href="#carousel" class="btn-secondary">檢視 5 頁完整 IG 輪播</a>
+        <a href="#profile" class="btn-secondary">設計師策展形象 ➔</a>
+      </div>
+
+      <div class="hero-footer-bar">
+        <span>CURATORIAL ARCHIVES · @CURATOR_BRAND</span>
+        <span>LAOZI & ERGONOMIC CIRCULATION · PAGE 01 / 05</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1: 空間呼吸三階律 (The 3-Tier Spatial Law)
+       ========================================================================== */
+  <section class="section-wrap" id="stratum">
+    <div class="container">
+      <div class="section-header">
+        <div class="editorial-badge">SPATIAL STRATUM · METHODOLOGY</div>
+        <h2 class="section-title">空間呼吸三階律<br>從人體工學、視覺心理到聲學安撫</h2>
+        <p class="section-desc">
+          真正最高級的奢華，從來不是在空間塞進了多少名牌，而是你敢不敢為生活留下一片「不被定義的空白」。
+        </p>
+      </div>
+
+      <div class="stratum-grid">
+        <!-- Stratum 01: Negative Space -->
+        <div class="stratum-card">
+          <div class="stratum-img-box">
+            <img src="web_assets/pause_p2_medium.jpg" alt="01 負空間">
+            <span class="stratum-card-badge">STRATUM 01</span>
+          </div>
+          <div class="stratum-body">
+            <div>
+              <div class="stratum-num">01 · NEGATIVE SPACE</div>
+              <h3 class="stratum-heading">30% 負空間：給身體自由呼吸</h3>
+              <div class="stratum-subcards">
+                <div class="stratum-item-block">
+                  <strong>[道德經虛實] 老子「當其無，有室之用」</strong>
+                  房子的本質在於被包圍的虛空，而非塞滿櫃體的實體。虛空才是容納生命流動的真實容器。
+                </div>
+                <div class="stratum-item-block">
+                  <strong>[動線淨寬] 走道嚴格保留 90–120cm</strong>
+                  沙發茶几間留 45cm 餘裕，身體在行走無碰撞防備中，大腦潛意識才能自然卸下緊繃。
+                </div>
+              </div>
+            </div>
+            <div class="stratum-footer-cite">
+              ERGONOMIC CIRCULATION · 走道淨寬釋放
+            </div>
+          </div>
+        </div>
+
+        <!-- Stratum 02: Low Entropy Anchor -->
+        <div class="stratum-card">
+          <div class="stratum-img-box">
+            <img src="web_assets/pause_p3_macro.jpg" alt="02 視線低熵落點">
+            <span class="stratum-card-badge">STRATUM 02</span>
+          </div>
+          <div class="stratum-body">
+            <div>
+              <div class="stratum-num">02 · LOW ENTROPY</div>
+              <h3 class="stratum-heading">視線低熵落點：消除視覺過載</h3>
+              <div class="stratum-subcards">
+                <div class="stratum-item-block">
+                  <strong>[格式塔圖底] 消除大腦微資訊消耗</strong>
+                  當整面牆塞滿層架與門片，「底」徹底消失，大腦因持續尋找視覺焦點而引發認知熵增與焦慮。
+                </div>
+                <div class="stratum-item-block">
+                  <strong>[空出一面牆] 純淨米灰礦物白牆</strong>
+                  留出消光石灰礦物抹灰牆，僅留一枝枯枝或一只陶瓶，讓疲憊視線隨時有一處安靜的落腳點。
+                </div>
+              </div>
+            </div>
+            <div class="stratum-footer-cite">
+              EDGAR RUBIN & GESTALT PERCEPTION
+            </div>
+          </div>
+        </div>
+
+        <!-- Stratum 03: Acoustic Calm -->
+        <div class="stratum-card">
+          <div class="stratum-img-box">
+            <img src="web_assets/pause_p4_lifestyle.jpg" alt="03 靜默的聲學容器">
+            <span class="stratum-card-badge">STRATUM 03</span>
+          </div>
+          <div class="stratum-body">
+            <div>
+              <div class="stratum-num">03 · ACOUSTIC CALM</div>
+              <h3 class="stratum-heading">靜默的聲學容器：心跳慢下來</h3>
+              <div class="stratum-subcards">
+                <div class="stratum-item-block">
+                  <strong>[吸收回音] 避免拋光磁磚刺耳反射</strong>
+                  以厚純羊毛地毯與重磅亞麻窗簾，將室內殘響時間控制在 0.4–0.6 秒的安詳黃金區間。
+                </div>
+                <div class="stratum-item-block">
+                  <strong>[卒姆托沈默] 材料質感的沈默對話</strong>
+                  彼得·卒姆托：「家不需要說太多話，它只需以質樸安詳的物質性，靜靜包裹你的呼吸。」
+                </div>
+              </div>
+            </div>
+            <div class="stratum-footer-cite">
+              PETER ZUMTHOR & JUHANI PALLASMAA
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Widget: 動線與聲學互動診斷器 -->
+      <div class="interactive-showcase-box">
+        <div class="editorial-badge">INTERACTIVE SPATIAL DIAGNOSTIC</div>
+        <h3 class="section-title" style="font-size: 1.8rem; margin: 10px 0 24px 0;">動線寬度與聲學殘響即時模擬試算</h3>
+
+        <div class="interactive-grid-tools">
+          <!-- Tool 1: Ergonomic Corridor Slider -->
+          <div class="tool-pane">
+            <div class="tool-header-title">
+              <span>🚶‍♂️ 客廳走道動線淨寬試算</span>
+              <span id="corridor-val" style="color: var(--accent-warm-sand); font-family: var(--font-mono);">105 cm</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">拖曳滑桿評估日常動線的身體防禦機制：</p>
+            <div class="slider-container">
+              <div class="slider-labels">
+                <span>60 cm (極緊繃)</span>
+                <span>90-120 cm (黃金餘裕)</span>
+                <span>150 cm (空靈)</span>
+              </div>
+              <input type="range" min="60" max="150" value="105" class="custom-range" id="corridor-slider">
+            </div>
+            <div class="diagnostic-result-badge" id="corridor-feedback">
+              <div class="diagnostic-status">狀態：黃金自由呼吸動線</div>
+              <div class="diagnostic-detail">寬度達到 105cm，肩部雙向交會無阻礙，身體在行進間自發性卸除防備緊繃感。</div>
+            </div>
+          </div>
+
+          <!-- Tool 2: RT60 Acoustic Calm Simulator -->
+          <div class="tool-pane">
+            <div class="tool-header-title">
+              <span>🔇 室內聲學殘響（RT60）模擬</span>
+              <span id="acoustic-val" style="color: var(--accent-warm-sand); font-family: var(--font-mono);">0.48 秒</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">切換軟裝配置，檢視聲音在空間中的消散速度：</p>
+            <div class="slider-container">
+              <div class="slider-labels">
+                <span>0.3s (過乾)</span>
+                <span>0.4-0.6s (修道院安詳)</span>
+                <span>1.4s+ (磁磚空洞回音)</span>
+              </div>
+              <input type="range" min="30" max="150" value="48" class="custom-range" id="acoustic-slider">
+            </div>
+            <div class="diagnostic-result-badge" id="acoustic-feedback">
+              <div class="diagnostic-status">狀態：厚純羊毛地毯 ＋ 重磅亞麻紗</div>
+              <div class="diagnostic-detail">殘響 0.48 秒，消除高頻刺耳反射，說話聲音沉靜溫潤，有效緩和自律神經。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: DESIGNER & FOUNDER PROFILE (形象照預留區與創辦人手記)
+       ========================================================================== -->
+  <section class="section-wrap designer-profile-section" id="profile">
+    <div class="container">
+      <div class="profile-grid">
+        <!-- Photo Column -->
+        <div class="profile-photo-col">
+          <div class="profile-photo-frame" id="profile-frame">
+            <img id="designer-portrait-img" src="web_assets/designer_profile.jpg" alt="空間風格師形象照">
+            <div class="photo-overlay-tag">
+              <span class="pulse-dot" style="background: #C2AF9B; box-shadow: 0 0 10px rgba(194, 175, 155, 0.8);"></span>
+              <span>PRINCIPAL CURATOR · 空間風格師</span>
+            </div>
+          </div>
+
+          <!-- Instant Photo Previewer Tool -->
+          <div class="photo-action-bar">
+            <div class="photo-tip-text">
+              <strong>風格師形象照已正式置入</strong> ｜ 檔案：<code>web_assets/designer_profile.jpg</code>
+            </div>
+            <label class="btn-photo-replace" for="portrait-file-input">
+              📷 重新選照預覽
+            </label>
+            <input type="file" id="portrait-file-input" accept="image/*" style="display: none;">
+          </div>
+        </div>
+
+        <!-- Info Column -->
+        <div class="profile-info-col">
+          <div class="profile-meta-header">FOUNDER & PRINCIPAL CURATOR · 創辦人策展手記</div>
+          <h2 class="profile-founder-title">
+            「風格不該被單一標籤定義，<br>
+            家應該長出屬於你自己的模樣。」
+          </h2>
+
+          <div class="profile-creed-quote">
+            “我們不做浮誇的視覺炫技，而是回到空間的本質：<br>
+            量身度量生活的尺度、撫摸材質的肌理體溫，在安靜留白中，讓心靈自在呼吸。”
+          </div>
+
+          <div class="profile-narrative">
+            <p>
+              許多屋主裝修前常焦慮地問我：「設計師，我家到底該做北歐風、日系侘寂還是現代極簡？」
+              我總是回答：<strong>不要讓風格標籤成為家的桎梏。</strong>
+            </p>
+            <p>
+              台灣居住環境寸土寸金，但「利用空間」絕不是把每一坪都釘死頂天立地的收納櫃。
+              身為空間量身策展人，我走入上百個真實家庭，融合現象學的多感官體驗、老子的虛實留白，以及嚴謹的人體工學動線，為居住者打造耐看、安靜、能被時光溫柔沈澱的靈魂居所。
+            </p>
+          </div>
+
+          <!-- 4 Core Methodology Badges (原創 IP 護城河) -->
+          <div class="profile-credentials-grid">
+            <div class="credential-card">
+              <div class="credential-badge-title">🕊️ 空間留白呼吸三階律</div>
+              <div class="credential-badge-desc">30% 負空間、視線低熵定錨與聲學容器，解除生活視覺過載。</div>
+            </div>
+            <div class="credential-card">
+              <div class="credential-badge-title">🕯️ 軟裝微光錨定法</div>
+              <div class="credential-badge-desc">拒絕單一刺眼主燈，2700K 局部低位光營造入夜放鬆儀式。</div>
+            </div>
+            <div class="credential-card">
+              <div class="credential-badge-title">📐 零碰撞人體工學動線</div>
+              <div class="credential-badge-desc">客廳走道 90–120cm、沙發茶几 45cm，釋放潛意識防備。</div>
+            </div>
+            <div class="credential-card">
+              <div class="credential-badge-title">🧶 材質肌理層次疊加</div>
+              <div class="credential-badge-desc">未染色羊毛、礦物抹灰、老白橡木與柴燒陶，五感自然撫慰。</div>
+            </div>
+          </div>
+
+          <div class="curator-stamp-wrap">
+            <div>
+              <div class="curator-stamp-logo">SPATIAL STRATUM</div>
+              <div class="curator-stamp-sub">@CURATOR_BRAND · SPATIAL STYLIST</div>
+            </div>
+            <a href="#booking" class="btn-primary" style="padding: 10px 22px; font-size: 0.85rem;">預約空間問診 ➔</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: CURATORIAL SELECTION MATRIX (留白與靜音軟裝選品矩陣)
+       ========================================================================== -->
+  <section class="section-wrap" id="matrix">
+    <div class="container">
+      <div class="section-header">
+        <div class="editorial-badge">CURATORIAL SELECTION ｜ MATRIX</div>
+        <h2 class="section-title">留白與靜音軟裝選品矩陣</h2>
+        <p class="section-desc">
+          對應週日專刊第 05 頁選品提案：以天然未染色的純粹物質性，降低空間噪訊，回應心靈對平靜的渴望。
+        </p>
+      </div>
+
+      <div class="matrix-showcase">
+        <!-- Still Life Image Preview -->
+        <div class="matrix-stilllife-img">
+          <img src="web_assets/pause_p5_stilllife.jpg" alt="留白與靜音軟裝選品平鋪">
+          <div class="matrix-img-overlay">
+            <div class="matrix-img-overlay-title">策展式平鋪材料陳列（Flatlay Matrix）</div>
+            <div class="matrix-img-overlay-sub">天然羊毛織品 · 消光礦物灰泥 · 老白橡木 · 柴燒茶碗 · 溪流卵石</div>
+          </div>
+        </div>
+
+        <!-- Matrix Items List -->
+        <div class="matrix-items-list">
+          <!-- Item 1 -->
+          <div class="matrix-item-card">
+            <div class="matrix-item-header">
+              <span class="matrix-item-badge">[地面織品]</span>
+              <span class="matrix-item-tag">ACOUSTIC FLOORING</span>
+            </div>
+            <h4 class="matrix-item-name">未染色純羊毛圈絨地毯</h4>
+            <p class="matrix-item-desc">
+              嚴選天然紐西蘭無化學漂染羊毛，高密度天然圈絨能吸收 40% 室內中高頻回音，同時釋放極致溫潤的赤足踩踏感。
+            </p>
+            <div class="matrix-item-metrics">
+              <span>• 吸音係數 NRC: 0.45</span>
+              <span>• 材質: 100% 天然原色羊毛</span>
+              <span>• 建議尺寸: 200 × 300 cm</span>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="matrix-item-card">
+            <div class="matrix-item-header">
+              <span class="matrix-item-badge">[壁面肌理]</span>
+              <span class="matrix-item-tag">MINERAL TEXTURE</span>
+            </div>
+            <h4 class="matrix-item-name">消光石灰礦物抹灰（Lime Plaster）</h4>
+            <p class="matrix-item-desc">
+              低飽和無反光燕麥灰泥，具備天然透氣調節濕度機能。消光質地徹底消除日光直射造成的視覺眩光，讓牆面成為沉靜背景。
+            </p>
+            <div class="matrix-item-metrics">
+              <span>• 光澤度: 0% 絕對消光</span>
+              <span>• 觸感: 細砂微粒天然阻尼</span>
+              <span>• 建議施作: 客廳焦點留白主牆</span>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="matrix-item-card">
+            <div class="matrix-item-header">
+              <span class="matrix-item-badge">[低重心家具]</span>
+              <span class="matrix-item-tag">LOW ERGONOMICS</span>
+            </div>
+            <h4 class="matrix-item-name">28cm 實木低矮茶几 ＋ 深座亞麻沙發</h4>
+            <p class="matrix-item-desc">
+              降低家具水平重心，釋放上方天花板與視線垂直空間。老白橡木溫潤手感，搭配天然溪流卵石紙鎮與柴燒茶碗。
+            </p>
+            <div class="matrix-item-metrics">
+              <span>• 离地高度: 28 cm</span>
+              <span>• 搭配沙發座深: 105 cm</span>
+              <span>• 動線餘裕: 留白 45 cm 走道</span>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="matrix-item-card">
+            <div class="matrix-item-header">
+              <span class="matrix-item-badge">[窗景呼吸]</span>
+              <span class="matrix-item-tag">LIGHT FILTER</span>
+            </div>
+            <h4 class="matrix-item-name">重磅洗水落地亞麻紗簾</h4>
+            <p class="matrix-item-desc">
+              粗紡亞麻織紋過濾刺眼直射陽光，將日光轉譯為朦朧柔和的晨曦漫射，同時兼具吸音與微風流動感。
+            </p>
+            <div class="matrix-item-metrics">
+              <span>• 透光度: 45% 漫射柔焦</span>
+              <span>• 克重: 320 g/m² 重磅亞麻</span>
+              <span>• 垂墜度: 自然落地 2 cm 堆疊</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: 5-SLIDE INSTAGRAM CAROUSEL VIEWER (5頁滿版輪播檢視器)
+       ========================================================================== -->
+  <section class="section-wrap carousel-section" id="carousel">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="editorial-badge">CURATORIAL CAROUSEL ARCHIVE</div>
+        <h2 class="section-title">Instagram 5 頁滿版策展卡片典藏</h2>
+        <p class="section-desc">
+          依循 <code>inch.transit</code> 國際雜誌美學排版：4:5 比例、高解析建築攝影底圖、電影遮罩與深霧面磨砂玻璃卡片。
+        </p>
+      </div>
+
+      <div class="carousel-viewer-box">
+        <!-- Main Screen -->
+        <div class="carousel-screen" id="carousel-screen">
+          <img class="carousel-slide-img active" src="web_assets/P1_封面.png" alt="P1 封面">
+          <img class="carousel-slide-img" src="web_assets/P2_尺度.png" alt="P2 尺度">
+          <img class="carousel-slide-img" src="web_assets/P3_留白.png" alt="P3 留白">
+          <img class="carousel-slide-img" src="web_assets/P4_場景.png" alt="P4 場景">
+          <img class="carousel-slide-img" src="web_assets/P5_提案.png" alt="P5 提案">
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="carousel-controls-bar">
+          <div class="carousel-pagination-dots" id="carousel-dots-group">
+            <button class="dot-btn active" data-index="0" title="Slide 1"></button>
+            <button class="dot-btn" data-index="1" title="Slide 2"></button>
+            <button class="dot-btn" data-index="2" title="Slide 3"></button>
+            <button class="dot-btn" data-index="3" title="Slide 4"></button>
+            <button class="dot-btn" data-index="4" title="Slide 5"></button>
+          </div>
+
+          <div class="carousel-caption-bar" id="carousel-caption">
+            <span>頁數：<strong id="current-slide-page">01 / 05</strong> ｜ <span id="current-slide-title">P1 封面 · 空間的暫停鍵：留白，才是最高級的軟裝</span></span>
+          </div>
+
+          <div class="carousel-arrows">
+            <button class="arrow-btn" id="prev-slide-btn" title="Previous Slide">‹</button>
+            <button class="arrow-btn" id="next-slide-btn" title="Next Slide">›</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Thumbnails Selector -->
+      <div class="carousel-thumbs-row">
+        <div class="thumb-item active" data-index="0">
+          <img src="web_assets/P1_封面.png" alt="P1 縮圖">
+        </div>
+        <div class="thumb-item" data-index="1">
+          <img src="web_assets/P2_尺度.png" alt="P2 縮圖">
+        </div>
+        <div class="thumb-item" data-index="2">
+          <img src="web_assets/P3_留白.png" alt="P3 縮圖">
+        </div>
+        <div class="thumb-item" data-index="3">
+          <img src="web_assets/P4_場景.png" alt="P4 縮圖">
+        </div>
+        <div class="thumb-item" data-index="4">
+          <img src="web_assets/P5_提案.png" alt="P5 縮圖">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: WEEKLY 7-DAY CURATORIAL ARCHIVES (七大主題日更策展誌)
+       ========================================================================== -->
+  <section class="section-wrap" id="archives">
+    <div class="container">
+      <div class="section-header">
+        <div class="editorial-badge">DAILY CURATION ARCHIVE · 7-DAY ROTATION</div>
+        <h2 class="section-title">七大主題日更策展誌</h2>
+        <p class="section-desc">
+          晨間 06:00 每日發布。每週一至週日輪播：靈感策展、裝潢避雷、空間問診、色彩情緒板、微醺生活、私房探店與設計師手記。
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs-bar">
+        <button class="filter-tab active" data-filter="all">全部專欄典藏</button>
+        <button class="filter-tab" data-filter="sunday">週日【設計師隨筆】</button>
+        <button class="filter-tab" data-filter="saturday">週六【私房探店簿】</button>
+        <button class="filter-tab" data-filter="friday">週五【微醺生活感】</button>
+        <button class="filter-tab" data-filter="thursday">週四【色彩情緒板】</button>
+        <button class="filter-tab" data-filter="wednesday">週三【空間問診室】</button>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="posts-grid" id="posts-container">
+        <!-- Post 1: Vol.36 Sunday Essay -->
+        <article class="post-card" data-category="sunday" onclick="openArticleModal('vol36')">
+          <div class="post-card-thumb">
+            <img src="web_assets/pause_p1_hero.jpg" alt="Vol.36 空間留白呼吸律">
+            <span class="post-day-tag">週日 · 隨筆 Vol.36</span>
+          </div>
+          <div class="post-card-body">
+            <div>
+              <div class="post-date-meta">2026.11.08 ｜ SUNDAY ESSAY</div>
+              <h3 class="post-card-title">空間的「暫停鍵」：留白，才是最高級的軟裝</h3>
+              <p class="post-card-snippet">
+                軟裝師親授空間留白三階律：動線負空間 30% × 視線低熵落點 × 聲學殘響減速。
+              </p>
+            </div>
+            <div class="post-card-footer">
+              <span>閱讀全文與選品 ➔</span>
+              <span>@curator_brand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2: Vol.35 Saturday Studio -->
+        <article class="post-card" data-category="saturday" onclick="openArticleModal('vol35')">
+          <div class="post-card-thumb">
+            <img src="web_assets/botanical_p1_hero.jpg" alt="Vol.35 私房探店植物工作室">
+            <span class="post-day-tag">週六 · 探店 Vol.35</span>
+          </div>
+          <div class="post-card-body">
+            <div>
+              <div class="post-date-meta">2026.11.07 ｜ SATURDAY STUDIO</div>
+              <h3 class="post-card-title">野性枝態與手作陶：生活道具開箱</h3>
+              <p class="post-card-snippet">
+                為什麼買了昂貴進口盆栽，家裡依然缺少生氣？軟裝師解密「空間野性枝態引光法」。
+              </p>
+            </div>
+            <div class="post-card-footer">
+              <span>閱讀全文與選品 ➔</span>
+              <span>@curator_brand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3: Vol.34 Friday Speakeasy -->
+        <article class="post-card" data-category="friday" onclick="openArticleModal('vol34')">
+          <div class="post-card-thumb">
+            <img src="web_assets/speakeasy_p1_hero.jpg" alt="Vol.34 微醺私吧">
+            <span class="post-day-tag">週五 · 微醺 Vol.34</span>
+          </div>
+          <div class="post-card-body">
+            <div>
+              <div class="post-date-meta">2026.11.06 ｜ FRIDAY SPEAKEASY</div>
+              <h3 class="post-card-title">週五下班後的私吧：2700K 局部微光儀式</h3>
+              <p class="post-card-snippet">
+                不要開刺眼大燈。只需點亮一張邊几上的微光、放上一張黑膠，疲憊的身心瞬間沉靜。
+              </p>
+            </div>
+            <div class="post-card-footer">
+              <span>閱讀全文與選品 ➔</span>
+              <span>@curator_brand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4: Vol.33 Thursday Moodboard -->
+        <article class="post-card" data-category="thursday" onclick="openArticleModal('vol33')">
+          <div class="post-card-thumb">
+            <img src="web_assets/forest_p1_hero.jpg" alt="Vol.33 色彩情緒板">
+            <span class="post-day-tag">週四 · 色彩 Vol.33</span>
+          </div>
+          <div class="post-card-body">
+            <div>
+              <div class="post-date-meta">2026.11.05 ｜ THURSDAY MOODBOARD</div>
+              <h3 class="post-card-title">深林墨綠、煙燻胡桃木與復古黃銅</h3>
+              <p class="post-card-snippet">
+                秋冬材質碰撞公式：深邃沈穩的木質肌理，搭配金屬細微光澤與手織毛呢。
+              </p>
+            </div>
+            <div class="post-card-footer">
+              <span>閱讀全文與選品 ➔</span>
+              <span>@curator_brand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5: Vol.32 Wednesday Clinic -->
+        <article class="post-card" data-category="wednesday" onclick="openArticleModal('vol32')">
+          <div class="post-card-thumb">
+            <img src="web_assets/dining_p1_hero.jpg" alt="Vol.32 空間問診中島餐桌">
+            <span class="post-day-tag">週三 · 問診 Vol.32</span>
+          </div>
+          <div class="post-card-body">
+            <div>
+              <div class="post-date-meta">2026.11.04 ｜ WEDNESDAY CLINIC</div>
+              <h3 class="post-card-title">中島吧台 vs 實木餐桌：小宅格局二選一</h3>
+              <p class="post-card-snippet">
+                台灣小宅如何兼顧備料烹飪與親友聚會？從 75cm 人體工學高度與走道動線切入解方。
+              </p>
+            </div>
+            <div class="post-card-footer">
+              <span>閱讀全文與選品 ➔</span>
+              <span>@curator_brand</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: MASTER BIBLIOGRAPHY (大師經典理論考據庫)
+       ========================================================================== -->
+  <section class="section-wrap" id="bibliography">
+    <div class="container">
+      <div class="section-header">
+        <div class="editorial-badge">MASTER BIBLIOGRAPHY · THEORETICAL FOUNDATION</div>
+        <h2 class="section-title">經典理論與考據資源總庫</h2>
+        <p class="section-desc">
+          本系統受《社群日更自動化手冊》第三章規範，拒絕快餐式網路搬運。每一篇策展手記皆深度錨定於建築現象學、人體工學、環境心理學與東方虛實哲思。
+        </p>
+      </div>
+
+      <div class="bib-grid">
+        <!-- Card 1: Juhani Pallasmaa -->
+        <div class="bib-card">
+          <div class="bib-header">
+            <span class="bib-author">尤哈尼·帕拉斯瑪 (Juhani Pallasmaa)</span>
+            <span class="bib-tag">空間現象學</span>
+          </div>
+          <div class="bib-book-title">《肌膚之目：建築與感官》</div>
+          <div class="bib-book-en">The Eyes of the Skin (Wiley, 2005)</div>
+          <p class="bib-core-theory">
+            批判過度視覺化的視覺霸權（Ocularcentrism），主張居所應喚醒觸覺、陰影、風感與聽嗅覺的多感官融合，讓空間成為安頓心靈的精神容器。
+          </p>
+        </div>
+
+        <!-- Card 2: Peter Zumthor -->
+        <div class="bib-card">
+          <div class="bib-header">
+            <span class="bib-author">彼得·卒姆托 (Peter Zumthor)</span>
+            <span class="bib-tag">建構氛圍美學</span>
+          </div>
+          <div class="bib-book-title">《思考建築》與《氛圍》</div>
+          <div class="bib-book-en">Thinking Architecture & Atmospheres (Birkhäuser)</div>
+          <p class="bib-core-theory">
+            探討空間中「材料質感的沈默對話」。真正的建築品質不在於誇張造型，而在於材料的親和力、自然光線照射下的沉靜溫度。
+          </p>
+        </div>
+
+        <!-- Card 3: Laozi -->
+        <div class="bib-card">
+          <div class="bib-header">
+            <span class="bib-author">老子 (Laozi)</span>
+            <span class="bib-tag">東方虛實哲學</span>
+          </div>
+          <div class="bib-book-title">《道德經》第十一章</div>
+          <div class="bib-book-en">Dao De Jing · Chapter 11</div>
+          <p class="bib-core-theory">
+            「鑿戶牖以為室，當其無，有室之用。」房子的本質與價值不在於牆壁與櫃體實體，而在於被留出來的「虛空」——留白才是承載生活的本質。
+          </p>
+        </div>
+
+        <!-- Card 4: Edgar Rubin -->
+        <div class="bib-card">
+          <div class="bib-header">
+            <span class="bib-author">愛德加·魯賓 (Edgar Rubin)</span>
+            <span class="bib-tag">格式塔知覺心理學</span>
+          </div>
+          <div class="bib-book-title">《視覺知覺中的圖與底》</div>
+          <div class="bib-book-en">Figure and Ground in Visual Perception (1915)</div>
+          <p class="bib-core-theory">
+            大腦感知必須依賴明確的「圖（焦點）」與「底（背景）」。當空間牆面塞滿收納與雜物時，「底」徹底消失，引發神經系統的慢性視覺過載（Visual Entropy）。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: SPATIAL CONSULTATION & BOOKING (空間問診預約單)
+       ========================================================================== -->
+  <section class="section-wrap booking-section" id="booking">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="editorial-badge">SPATIAL CLINIC & INQUIRY</div>
+        <h2 class="section-title">預約空間問診與軟裝量身策展</h2>
+        <p class="section-desc">
+          每月份僅開放 6 組名額，維持案場親臨測量與材質選品的極致專注度。
+        </p>
+      </div>
+
+      <div class="booking-card-wrap">
+        <form id="spatial-inquiry-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group-row">
+            <div class="form-item">
+              <label class="form-label">您的稱呼 / 姓名 *</label>
+              <input type="text" class="form-input" required placeholder="例如：林小姐 / 陳先生">
+            </div>
+            <div class="form-item">
+              <label class="form-label">聯絡電話 / LINE ID *</label>
+              <input type="text" class="form-input" required placeholder="09xx-xxx-xxx 或 LINE ID">
+            </div>
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-item">
+              <label class="form-label">房屋現況類型 *</label>
+              <select class="form-select" required>
+                <option value="">請選擇屋況</option>
+                <option value="new">新成屋（毛胚 / 標準建商交屋）</option>
+                <option value="renovation">中古屋全室軟裝翻新</option>
+                <option value="presale">預售屋客變與軟裝預先規劃</option>
+                <option value="partial">局部空間改造（客餐廳 / 主臥 / 書房）</option>
+              </select>
+            </div>
+            <div class="form-item">
+              <label class="form-label">室內實坪面積 *</label>
+              <select class="form-select" required>
+                <option value="">請選擇室內坪數</option>
+                <option value="s">15 坪以下（小宅極致呼吸）</option>
+                <option value="m">16 - 28 坪（標準家庭首選）</option>
+                <option value="l">29 - 45 坪（開闊策展戶型）</option>
+                <option value="xl">46 坪以上 / 透天別墅</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label class="form-label">目前空間最大的居住痛點（可複選）</label>
+            <div class="radio-pill-group">
+              <label class="radio-pill-label">
+                <input type="checkbox" name="pain" value="storage"> 櫃體做太滿感到窒息
+              </label>
+              <label class="radio-pill-label">
+                <input type="checkbox" name="pain" value="circulation"> 動線擁擠常撞到家具
+              </label>
+              <label class="radio-pill-label">
+                <input type="checkbox" name="pain" value="acoustic"> 地板磁磚回音刺耳
+              </label>
+              <label class="radio-pill-label">
+                <input type="checkbox" name="pain" value="lighting"> 大燈過亮缺少放鬆氛圍
+              </label>
+              <label class="radio-pill-label">
+                <input type="checkbox" name="pain" value="style"> 風格混亂不知道如何搭配
+              </label>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label class="form-label">期望的空間留白呼吸比例</label>
+            <div class="radio-pill-group">
+              <label class="radio-pill-label active">
+                <input type="radio" name="ratio" value="30" checked> 30% 黃金呼吸律（推薦）
+              </label>
+              <label class="radio-pill-label">
+                <input type="radio" name="ratio" value="20"> 20% 輕度收納留白
+              </label>
+              <label class="radio-pill-label">
+                <input type="radio" name="ratio" value="40"> 40% 空靈侘寂沉浸
+              </label>
+            </div>
+          </div>
+
+          <div class="form-item">
+            <label class="form-label">您對新家的生活期許與補充描述</label>
+            <textarea class="form-textarea" rows="4" placeholder="例如：希望下班回家能有一處放鬆聽音樂的角落、沙發茶几希望有更寬的行走距離..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-booking">
+            確認送出空間問診預約單 ➔
+          </button>
+
+          <div class="booking-success-box" id="booking-success">
+            <h4 style="font-family: var(--font-serif); font-size: 1.3rem; color: var(--accent-warm-sand); margin-bottom: 8px;">
+              ✨ 空間問診需求已成功遞交！
+            </h4>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+              空間風格師團隊將於 24 小時內與您聯繫，為您安排專屬案場丈量與動線負空間評估。
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <div class="footer-brand-title">SPATIAL STRATUM</div>
+          <p class="footer-brand-desc">
+            空間風格師・空間量身策展人。<br>
+            以建築現象學、人體工學動線與東方虛實哲思，為每個家量身策劃會呼吸的安詳生活。
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">專欄導覽</div>
+          <ul class="footer-links-list">
+            <li><a href="#stratum">空間呼吸三階律</a></li>
+            <li><a href="#matrix">靜音軟裝選品</a></li>
+            <li><a href="#carousel">5頁 IG 輪播</a></li>
+            <li><a href="#archives">七日日更策展誌</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">理論與考據</div>
+          <ul class="footer-links-list">
+            <li><a href="#bibliography">尤哈尼·帕拉斯瑪</a></li>
+            <li><a href="#bibliography">彼得·卒姆托</a></li>
+            <li><a href="#bibliography">老子《道德經》</a></li>
+            <li><a href="#bibliography">格式塔圖底心理學</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">聯絡與追蹤</div>
+          <ul class="footer-links-list">
+            <li><a href="#">Instagram: @curator_brand</a></li>
+            <li><a href="#">Threads: @curator_brand</a></li>
+            <li><a href="#booking">預約案場軟裝顧問</a></li>
+            <li><a href="#profile">創辦人形象專頁</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 SPATIAL STRATUM ｜ 空間風格師工作室 版權所有</span>
+        <span>CURATORIAL ARCHIVES · AN EDITION ON ART, DESIGN AND PASSAGE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL: FULL ARTICLE READER
+       ========================================================================== -->
+  <div class="article-modal" id="article-modal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeArticleModal()">✕</button>
+      <div id="modal-article-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT INTERACTIONS
+       ========================================================================== -->
+  <script>
+    // --- 1. Theme Toggle (Dark Editorial vs Warm Paper) ---
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+    let isPaperMode = false;
+
+    themeBtn.addEventListener('click', () => {
+      isPaperMode = !isPaperMode;
+      if (isPaperMode) {
+        document.documentElement.classList.remove('theme-dark');
+        document.documentElement.classList.add('theme-paper');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '夜宴暗調';
+      } else {
+        document.documentElement.classList.remove('theme-paper');
+        document.documentElement.classList.add('theme-dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '晨光紙感';
+      }
+    });
+
+    // --- 2. Mobile Menu Toggle ---
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.getElementById('nav-links');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    // Close mobile nav on click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('mobile-open'));
+    });
+
+    // --- 3. Interactive Carousel Viewer ---
+    const slideImages = document.querySelectorAll('.carousel-slide-img');
+    const dotButtons = document.querySelectorAll('.dot-btn');
+    const thumbItems = document.querySelectorAll('.thumb-item');
+    const currentSlidePage = document.getElementById('current-slide-page');
+    const currentSlideTitle = document.getElementById('current-slide-title');
+    const prevBtn = document.getElementById('prev-slide-btn');
+    const nextBtn = document.getElementById('next-slide-btn');
+
+    const slideTitles = [
+      "P1 封面 · 空間的暫停鍵：留白，才是最高級的軟裝",
+      "P2 尺度 · 01 · 30% 負空間：給身體自由呼吸（老子虛實 × 動線 90-120cm）",
+      "P3 留白 · 02 · 視線低熵落點：消除視覺過載（格式塔圖底 × 空出一面牆）",
+      "P4 場景 · 03 · 靜默的聲學容器：心跳慢下來（厚羊毛地毯 × 卒姆托沈默）",
+      "P5 提案 · 空間風格師・留白與靜音軟裝選品矩陣（未染色羊毛 × 礦物抹灰 × 實木几）"
+    ];
+
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+      if (index < 0) index = slideImages.length - 1;
+      if (index >= slideImages.length) index = 0;
+      currentSlide = index;
+
+      slideImages.forEach((img, i) => {
+        img.classList.toggle('active', i === currentSlide);
+      });
+      dotButtons.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+      thumbItems.forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === currentSlide);
+      });
+
+      currentSlidePage.textContent = `0${currentSlide + 1} / 05`;
+      currentSlideTitle.textContent = slideTitles[currentSlide];
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    dotButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'), 10);
+        goToSlide(idx);
+      });
+    });
+
+    thumbItems.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const idx = parseInt(thumb.getAttribute('data-index'), 10);
+        goToSlide(idx);
+      });
+    });
+
+    // --- 4. Interactive Ergonomic & Acoustic Sliders ---
+    const corridorSlider = document.getElementById('corridor-slider');
+    const corridorVal = document.getElementById('corridor-val');
+    const corridorFeedback = document.getElementById('corridor-feedback');
+
+    corridorSlider.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      corridorVal.textContent = `${val} cm`;
+
+      if (val < 75) {
+        corridorFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: #E2725B;">狀態：動線嚴重擁擠阻塞</div>
+          <div class="diagnostic-detail">低於 75cm，行走時需側身閃避家具，神經自律系統持續處於碰撞警戒狀態。</div>
+        `;
+      } else if (val >= 75 && val < 90) {
+        corridorFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: #D4AF37;">狀態：基本勉強通過</div>
+          <div class="diagnostic-detail">80–89cm 僅容單人通過，雙人交會時需停步禮讓，略帶壓迫感。</div>
+        `;
+      } else if (val >= 90 && val <= 125) {
+        corridorFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: var(--accent-warm-sand);">狀態：黃金自由呼吸動線</div>
+          <div class="diagnostic-detail">走道保留 90–120cm 餘裕，身體在無碰撞穿梭中，潛意識自然卸下緊繃。</div>
+        `;
+      } else {
+        corridorFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: #98B4AA;">狀態：寬裕大宅策展尺度</div>
+          <div class="diagnostic-detail">超過 125cm，視線延伸至落地窗景，營造修道院般空靈安詳之大境。</div>
+        `;
+      }
+    });
+
+    const acousticSlider = document.getElementById('acoustic-slider');
+    const acousticVal = document.getElementById('acoustic-val');
+    const acousticFeedback = document.getElementById('acoustic-feedback');
+
+    acousticSlider.addEventListener('input', (e) => {
+      const val = (parseInt(e.target.value, 10) / 100).toFixed(2);
+      acousticVal.textContent = `${val} 秒`;
+
+      if (val < 0.35) {
+        acousticFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: #D4AF37;">狀態：過度吸音（枯燥消音室感）</div>
+          <div class="diagnostic-detail">殘響小於 0.35 秒，說話聲音缺少空氣感與空間延展，久待易感到耳膜悶重。</div>
+        `;
+      } else if (val >= 0.35 && val <= 0.65) {
+        acousticFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: var(--accent-warm-sand);">狀態：厚純羊毛地毯 ＋ 重磅亞麻紗</div>
+          <div class="diagnostic-detail">殘響在 0.4–0.6 秒黃金區間，消除刺耳反射，聲音沉靜溫潤，如卒姆托的沈默空間。</div>
+        `;
+      } else {
+        acousticFeedback.innerHTML = `
+          <div class="diagnostic-status" style="color: #E2725B;">狀態：拋光石英磚刺耳殘響（焦慮源）</div>
+          <div class="diagnostic-detail">殘響超過 0.7 秒，光滑磁磚與天花板造成梳狀濾波回音，讓身心處於慢性焦躁。</div>
+        `;
+      }
+    });
+
+    // --- 5. Designer Portrait Upload & Instant Live Preview ---
+    const portraitInput = document.getElementById('portrait-file-input');
+    const portraitImg = document.getElementById('designer-portrait-img');
+
+    portraitInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const objectUrl = URL.createObjectURL(file);
+        portraitImg.src = objectUrl;
+        alert("✨ 形象照預覽更新成功！如需永久儲存，請將該圖覆蓋 web_assets/designer_profile.jpg。");
+      }
+    });
+
+    // Drag and Drop onto photo frame
+    const profileFrame = document.getElementById('profile-frame');
+    ['dragenter', 'dragover'].forEach(eventName => {
+      profileFrame.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        profileFrame.style.borderColor = '#C2AF9B';
+        profileFrame.style.transform = 'scale(1.02)';
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      profileFrame.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        profileFrame.style.borderColor = 'var(--border-gold-strong)';
+        profileFrame.style.transform = 'scale(1)';
+      }, false);
+    });
+
+    profileFrame.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const file = dt.files[0];
+      if (file && file.type.startsWith('image/')) {
+        portraitImg.src = URL.createObjectURL(file);
+        alert("✨ 照片已拖曳載入預覽！效果立即呈現。");
+      }
+    });
+
+    // --- 6. Post Filter Tabs ---
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const postCards = document.querySelectorAll('.post-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.getAttribute('data-filter');
+
+        postCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // --- 7. Modal Articles ---
+    const modal = document.getElementById('article-modal');
+    const modalBody = document.getElementById('modal-article-body');
+
+    const articlesData = {
+      vol36: `
+        <div class="editorial-badge">SUNDAY ESSAY ｜ VOL.36</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-hero); margin: 12px 0 20px 0;">
+          空間的「暫停鍵」：留白，才是最高級的軟裝
+        </h2>
+        <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 16px;"><strong>【受眾痛點與案場回訪】</strong><br>
+          為什麼很多人家裡做滿了昂貴的收納櫃、買齊了名牌家具，走進去卻依然感到胸口發悶？今天週日早晨去回訪一位屋主的新家，一進門玄關、客廳、餐廳每一面牆都做滿了頂天立地的封閉系統櫃，客廳中央塞了一張霸氣的超大 L 型真皮沙發，茶几、邊几、電視櫃擺得滿滿噹噹。屋主苦笑著跟我說：「設計師，我花了好幾百萬裝修，每坪都利用到了極致，為什麼回到家卻完全放鬆不下來？」</p>
+          
+          <p style="margin-bottom: 16px;"><strong>【軟裝師空間呼吸三階律】</strong><br>
+          1. <strong>動線負空間 30%</strong>：老子《道德經》云：「鑿戶牖以為室，當其無，有室之用。」房子的本質在於被包圍的虛空。客廳走道請堅決留出 90–120cm 的絕對淨寬，沙發與茶几間維持 45cm 餘裕，讓身體在無障礙穿梭時卸下緊繃。<br>
+          2. <strong>視線低熵落點</strong>：格式塔心理學指出視覺需要「圖與底」對比。空出一整面純淨米灰礦物白牆，上面只留一株枯枝或一只陶瓶，讓疲憊視線隨時有一處安靜的落腳點。<br>
+          3. <strong>聲學殘響減速</strong>：鋪上未染色純羊毛地毯，搭配落地重磅亞麻窗簾，將室內殘響時間控制在 0.4–0.6 秒黃金舒適區間。</p>
+          
+          <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: 6px; border-left: 3px solid var(--accent-ochre); margin-top: 24px;">
+            <strong>📌 本篇靈感與案例參考（References & Credits）：</strong><br>
+            • 東方虛實哲學與空間本質：老子 —《道德經》第十一章（「當其無，有室之用」）<br>
+            • 視覺認知與圖底關係：Edgar Rubin & Gestalt Psychology —《Figure and Ground in Visual Perception》<br>
+            • 靜默建築美學：Juhani Pallasmaa —《肌膚之目：建築與感官》（The Eyes of the Skin）<br>
+            • 住宅建築聲學與自律神經：ISO 3382 Acoustic RT60 Standards
+          </div>
+        </div>
+      `,
+      vol35: `
+        <div class="editorial-badge">SATURDAY STUDIO ｜ VOL.35</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-hero); margin: 12px 0 20px 0;">
+          野性枝態與手作陶：私房植物工作室探訪
+        </h2>
+        <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 16px;">
+            許多人買了一堆網美盆栽，擺在家裡卻顯得凌亂像花市。關鍵在於挑選「帶有空氣感與野性生長枝態」的植物，並搭配具有呼吸氣孔的柴燒老陶盆。
+          </p>
+          <p style="margin-bottom: 16px;">
+            <strong>【策展心法】</strong><br>
+            • 點狀高低錯落：一株 1.5 米落地大植物定錨，搭配 2 處低矮陶器點綴。<br>
+            • 空白映襯：讓枝條倒映在礦物白牆上，陽光穿透葉片灑落光影斑駁。
+          </p>
+        </div>
+      `,
+      vol34: `
+        <div class="editorial-badge">FRIDAY SPEAKEASY ｜ VOL.34</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-hero); margin: 12px 0 20px 0;">
+          週五下班後的私吧：2700K 局部微光儀式
+        </h2>
+        <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 16px;">
+            週五夜晚回家，請堅決關掉天花板刺眼白光。點亮邊几上一盞 2700K 暖光檯燈，倒一杯威士忌，聽黑膠唱片靜靜旋轉。
+          </p>
+          <p>
+            「光線降下來，心跳才能慢下來。」低位點狀光源是切換公私生活儀式感最高效的軟裝手法。
+          </p>
+        </div>
+      `,
+      vol33: `
+        <div class="editorial-badge">THURSDAY MOODBOARD ｜ VOL.33</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-hero); margin: 12px 0 20px 0;">
+          深林墨綠、煙燻胡桃木與復古黃銅
+        </h2>
+        <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 16px;">
+            當季色彩與材質情緒板：以低明度墨綠（Deep Spruce Green）作為空間沉靜基底，融合煙燻黑胡桃木的溫潤沉穩，再以細微刷紋黃銅勾勒精緻金屬光澤。
+          </p>
+        </div>
+      `,
+      vol32: `
+        <div class="editorial-badge">WEDNESDAY CLINIC ｜ VOL.32</div>
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-hero); margin: 12px 0 20px 0;">
+          中島吧台 vs 實木餐桌：小宅格局二選一
+        </h2>
+        <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 16px;">
+            小宅空間有限時，中島常因高度 85–90cm 導致久坐不適；選擇 75cm 人體工學實木延伸餐桌，才能同時滿足長久用餐、筆電辦公與親友歡聚。
+          </p>
+        </div>
+      `
+    };
+
+    function openArticleModal(id) {
+      if (articlesData[id]) {
+        modalBody.innerHTML = articlesData[id];
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeArticleModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeArticleModal();
+    });
+
+    // --- 8. Booking Form Submit ---
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('booking-success').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('booking-success').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  </script>
+</body>
+</html>
